@@ -9,13 +9,13 @@ Main.prototype = new BasicView(/*config*/);
 Main.prototype.setup = function()
 {
 	//add light
-	var light = new THREE.PointLight(0xffffff, 1, 2000);
-	light.position.set(0, 0, 200);
+	var light = new THREE.PointLight(0xffffff, 1, 3000);
+	light.position.set(0, 0, 1000);
 	this.scene.add(light);
 
 	//add cube
 	this.cube = new THREE.Mesh(
-		new THREE.CubeGeometry(100, 100, 100),
+		new THREE.CubeGeometry(500, 500, 500),
 		new THREE.MeshLambertMaterial({ color: 0xffffff, shading : THREE.FlatShading })
 	);
 	this.scene.add(this.cube);
@@ -25,8 +25,8 @@ Main.prototype.setup = function()
 Main.prototype.update = function()
 {
 	//update camera
-	this.camera.position.x += ( (this.mouseX / this.screenWidth  - 0.5) * 200 - this.camera.position.x) * 0.1;
-	this.camera.position.y += (-(this.mouseY / this.screenHeight - 0.5) * 200 - this.camera.position.y) * 0.1;
+	this.camera.position.x += ( (this.mouseX / this.screenWidth  - 0.5) * 1000 - this.camera.position.x) * 0.1;
+	this.camera.position.y += (-(this.mouseY / this.screenHeight - 0.5) * 1000 - this.camera.position.y) * 0.1;
 	this.camera.lookAt(this.scene.position);
 
 	//update cube

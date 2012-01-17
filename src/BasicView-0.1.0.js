@@ -253,10 +253,10 @@ BasicView.prototype =
 
 					default:
 						self.cameraType = "Perspective";
-						self.camera = new THREE.PerspectiveCamera(80, self.screenWidth / self.screenHeight, 1, 10000);
+						self.camera = new THREE.PerspectiveCamera(75, self.screenWidth / self.screenHeight, 1, 10000);
 						break;
 				}
-				self.camera.position.z = 200;
+				self.camera.position.z = 1000;
 
 				//create renderer
 				switch (rendererType)
