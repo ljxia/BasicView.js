@@ -116,65 +116,72 @@ BasicView.prototype =
 	/**
 	 * This function is called when mouse button is pressed.
 	 * @event
+	 * @param {object} event Event object.
 	 * @return void
 	 */
-	onMouseDown : function()
+	onMouseDown : function(event)
 	{
 	},
 
 	/**
 	 * This function is called when mouse button is released.
 	 * @event
+	 * @param {object} event Event object.
 	 * @return void
 	 */
-	onMouseUp : function()
+	onMouseUp : function(event)
 	{
 	},
 
 	/**
 	 * This function is called when mouse position is updated.
 	 * @event
+	 * @param {object} event Event object.
 	 * @return void
 	 */
-	onMouseMove : function()
+	onMouseMove : function(event)
 	{
 	},
 
 	/**
 	 * This function is called when mouse drag position is updated.
 	 * @event
+	 * @param {object} event Event object.
 	 * @return void
 	 */
-	onMouseDragged : function()
+	onMouseDragged : function(event)
 	{
 	},
 
 	/**
 	 * This function is called when keyboard is pressed.
 	 * @event
-	 * @param {keyCode} key code
+	 * @param {integer} keyCode Key code.
+	 * @param {object} event Event object.
 	 * @return void
 	 */
-	onKeyDown : function(keyCode)
+	onKeyDown : function(keyCode, event)
 	{
 	},
 
 	/**
 	 * This function is called when keyboard is released.
 	 * @event
-	 * @param {keyCode} key code
+	 * @param {integer} keyCode Key code.
+	 * @param {object} event Event object.
 	 * @return void
 	 */
-	onKeyUp : function(keyCode)
+	onKeyUp : function(keyCode, event)
 	{
 	},
 
 	/**
 	 * This function is called when window is resized.
 	 * @event
+	 * @param {object} e Event object.
 	 * @return void
 	 */
-	onResize : function()
+	onResize : function(event)
 	{
 	},
 
@@ -322,7 +329,7 @@ BasicView.prototype =
 	_mouseDownHandler : function(e)
 	{
 		this.isMouseDown = true;
-		this.onMouseDown();
+		this.onMouseDown(e);
 	},
 
 	_mouseMoveHandler : function(e)
@@ -334,11 +341,11 @@ BasicView.prototype =
 		if (this.isMouseDown)
 		{
 			this.isMouseDragging = true;
-			this.onMouseDragged();
+			this.onMouseDragged(e);
 		}
 		else
 		{
-			this.onMouseMove();
+			this.onMouseMove(e);
 		}
 	},
 
@@ -346,19 +353,19 @@ BasicView.prototype =
 	{
 		this.isMouseDown = false;
 		this.isMouseDragging = false;
-		this.onMouseUp();
+		this.onMouseUp(e);
 	},
 
 	_keyDownHandler : function(e)
 	{
 		this.isKeyDown = true;
-		this.onKeyDown(e.keyCode);
+		this.onKeyDown(e.keyCode, e);
 	},
 
 	_keyUpHandler : function(e)
 	{
 		this.isKeyDown = false;
-		this.onKeyUp(e.keyCode);
+		this.onKeyUp(e.keyCode, e);
 	},
 
 	_resizeHandler : function(e)
@@ -391,7 +398,7 @@ BasicView.prototype =
 			}
 		}
 
-		this.onResize();
+		this.onResize(e);
 	},
 	
 	_unloadHandler : function(e)
