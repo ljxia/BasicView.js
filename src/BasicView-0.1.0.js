@@ -178,7 +178,7 @@ BasicView.prototype =
 	/**
 	 * This function is called when window is resized.
 	 * @event
-	 * @param {object} e Event object.
+	 * @param {object} event Event object.
 	 * @return void
 	 */
 	onResize : function(event)
