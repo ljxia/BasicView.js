@@ -47,36 +47,36 @@ Main.prototype.exit = function()
 };
 
 //------------------------------------------------------------
-Main.prototype.onMouseDown = function()
+Main.prototype.onMouseDown = function(event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onMouseUp = function()
+Main.prototype.onMouseUp = function(event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onMouseMove = function()
+Main.prototype.onMouseMove = function(event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onMouseDragged = function()
+Main.prototype.onMouseDragged = function(event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onKeyDown = function(keyCode)
+Main.prototype.onKeyDown = function(keyCode, event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onKeyUp = function(keyCode)
+Main.prototype.onKeyUp = function(keyCode, event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onResize = function()
+Main.prototype.onResize = function(event)
 {
 };
