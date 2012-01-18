@@ -7,17 +7,21 @@
  * @license <a href="http://en.wikipedia.org/wiki/MIT_License">X11/MIT License</a>
  */
 
+/** 
+ * @namespace Namespace of alumican libs.
+ */
 var ALUMICAN;
 if (!ALUMICAN) ALUMICAN = {}; 
 
 /**
  * BasicView class is very simple template for getting started Three.js.
  * @class
+ *
  * @param {string} [rendererType="WebGL"] Renderer type ("WebGL" or "Canvas" or "SVG" or "DOM").
  * @param {object} [rendererParams={}] Renderer construct parameters.
  * @param {string} [cameraType="Perspective"] Camera type ("Perspective" or "Orthographic").
  * @param {bool} [useStats=true] Whether stats is used or not.
- * @param {bool} [useAutoScalingToStage=true] Whether content is scaled to fit stage (true) or not.
+ * @param {bool} [useAutoScaling=true] Whether content is scaled to fit window or not.
  * @param {integer} [viewportWidth=640] Viewport width. If auto scaling is used, this value is ignored.
  * @param {integer} [viewportHeight=480] Viewport height. If auto scaling is used, this value is ignored.
  *
@@ -29,18 +33,18 @@ if (!ALUMICAN) ALUMICAN = {};
  * @property {integer} mouseY Current mouse position y.
  * @property {integer} oldMouseX Previous mouse position x.
  * @property {integer} oldMouseY Previous mouse position y.
- * @property {integer} screenWidth Window width.
- * @property {integer} screenHeight Window height.
+ * @property {integer} viewportWidth Viewport width.
+ * @property {integer} viewportHeight Viewport height.
  * @property {bool} isMouseDown Whether mouse is being pressed.
  * @property {bool} isMouseDragging Whether mouse is being dragged.
  * @property {bool} isKeyDown Whether keyboard is being pressed.
  * @property {string} rendererType Renderer Type.
  * @property {string} cameraType Camera Type.
- * @property {bool} useAutoScalingToStage Whether content is scaled to fit stage (true) or not.
+ * @property {bool} useAutoScaling Whether content is scaled to fit stage (true) or not.
  *
  * @return void
  */
-ALUMICAN.BasicView = function(rendererType, rendererParams, cameraType, useStats, useAutoScalingToStage, viewportWidth, viewportHeight)
+ALUMICAN.BasicView = function(rendererType, rendererParams, cameraType, useStats, useAutoScaling, viewportWidth, viewportHeight)
 {
 	this.container;
 
@@ -53,8 +57,8 @@ ALUMICAN.BasicView = function(rendererType, rendererParams, cameraType, useStats
 	this.oldMouseX;
 	this.oldMouseY;
 
-	this.screenWidth;
-	this.screenHeight;
+	this.viewportWidth;
+	this.viewportHeight;
 
 	this.isMouseDown;
 	this.isMouseDragging;
@@ -63,7 +67,7 @@ ALUMICAN.BasicView = function(rendererType, rendererParams, cameraType, useStats
 	this.rendererType;
 	this.cameraType;
 	
-	this.useAutoScalingToStage;
+	this.useAutoScaling;
 
 	//----------------------------------------
 	//call construntor
@@ -71,8 +75,9 @@ ALUMICAN.BasicView = function(rendererType, rendererParams, cameraType, useStats
 }
 
 /**
- * Version information
+ * Version information.
  * @static
+ * @constant
  */
 ALUMICAN.BasicView.version = "1.0.1";
 
@@ -191,14 +196,14 @@ ALUMICAN.BasicView.prototype =
 	 * #@+
 	 * @private
 	 */
-	_initialize : function(rendererType, rendererParams, cameraType, useStats, useAutoScalingToStage, viewportWidth, viewportHeight)
+	_initialize : function(rendererType, rendererParams, cameraType, useStats, useAutoScaling, viewportWidth, viewportHeight)
 	{
 		//set default value
 		if (rendererType == undefined) rendererType = "WebGL";
 		if (rendererParams == undefined) rendererParams = {};
 		if (cameraType == undefined) cameraType = "Perspective";
 		if (useStats == undefined) useStats = true;
-		if (useAutoScalingToStage == undefined) useAutoScalingToStage = true;
+		if (useAutoScaling == undefined) useAutoScaling = true;
 		if (viewportWidth == undefined) viewportWidth = 640;
 		if (viewportHeight == undefined) viewportHeight = 480;
 
@@ -219,7 +224,7 @@ ALUMICAN.BasicView.prototype =
 		{
 			this.rendererType = rendererType;
 			this.cameraType = cameraType;
-			this.useAutoScalingToStage = useAutoScalingToStage;
+			this.useAutoScaling = useAutoScaling;
 
 			this.isMouseDown = false;
 			this.isMouseDragging = false;
@@ -231,15 +236,15 @@ ALUMICAN.BasicView.prototype =
 			var self = this;
 			$(function() {
 
-				if (self.useAutoScalingToStage)
+				if (self.useAutoScaling)
 				{
-					self.screenWidth  = $(window).width();
-					self.screenHeight = $(window).height();
+					self.viewportWidth  = $(window).width();
+					self.viewportHeight = $(window).height();
 				}
 				else
 				{
-					self.screenWidth  = viewportWidth;
-					self.screenHeight = viewportHeight;
+					self.viewportWidth  = viewportWidth;
+					self.viewportHeight = viewportHeight;
 				}
 
 				//create scene
@@ -249,12 +254,12 @@ ALUMICAN.BasicView.prototype =
 				switch (cameraType)
 				{
 					case "Orthographic":
-						self.camera = new THREE.OrthographicCamera(-self.screenWidth * 0.5, self.screenWidth * 0.5, self.screenHeight * 0.5, -self.screenHeight * 0.5, 1, 10000);
+						self.camera = new THREE.OrthographicCamera(-self.viewportWidth * 0.5, self.viewportWidth * 0.5, self.viewportHeight * 0.5, -self.viewportHeight * 0.5, 1, 10000);
 						break;
 
 					default:
 						self.cameraType = "Perspective";
-						self.camera = new THREE.PerspectiveCamera(75, self.screenWidth / self.screenHeight, 1, 10000);
+						self.camera = new THREE.PerspectiveCamera(75, self.viewportWidth / self.viewportHeight, 1, 10000);
 						break;
 				}
 				self.camera.position.z = 1000;
@@ -279,7 +284,7 @@ ALUMICAN.BasicView.prototype =
 						self.renderer = new THREE.WebGLRenderer(rendererParams);
 						break;
 				}
-				self.renderer.setSize(self.screenWidth, self.screenHeight);
+				self.renderer.setSize(self.viewportWidth, self.viewportHeight);
 
 				//create container
 				self.container = $("<div>").get(0);
@@ -371,30 +376,30 @@ ALUMICAN.BasicView.prototype =
 
 	_resizeHandler : function(e)
 	{
-		if (this.useAutoScalingToStage)
+		if (this.useAutoScaling)
 		{
-			this.screenWidth  = $(window).width();
-			this.screenHeight = $(window).height();
+			this.viewportWidth  = $(window).width();
+			this.viewportHeight = $(window).height();
 		}
 
-		if (this.useAutoScalingToStage)
+		if (this.useAutoScaling)
 		{
 			switch (this.cameraType)
 			{
 				case "Orthographic":
-					this.camera.aspect = this.screenWidth / this.screenHeight;
-					this.camera.left = -this.screenWidth * 0.5;
-					this.camera.right = this.screenWidth * 0.5;
-					this.camera.top = this.screenHeight * 0.5;
-					this.camera.bottom = -this.screenHeight * 0.5;
+					this.camera.aspect = this.viewportWidth / this.viewportHeight;
+					this.camera.left = -this.viewportWidth * 0.5;
+					this.camera.right = this.viewportWidth * 0.5;
+					this.camera.top = this.viewportHeight * 0.5;
+					this.camera.bottom = -this.viewportHeight * 0.5;
 					this.camera.updateProjectionMatrix();
-					this.renderer.setSize(this.screenWidth, this.screenHeight);
+					this.renderer.setSize(this.viewportWidth, this.viewportHeight);
 					break;
 
 				default:
-					this.camera.aspect = this.screenWidth / this.screenHeight;
+					this.camera.aspect = this.viewportWidth / this.viewportHeight;
 					this.camera.updateProjectionMatrix();
-					this.renderer.setSize(this.screenWidth, this.screenHeight);
+					this.renderer.setSize(this.viewportWidth, this.viewportHeight);
 					break;
 			}
 		}

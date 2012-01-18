@@ -25,8 +25,8 @@ Main.prototype.setup = function()
 Main.prototype.update = function()
 {
 	//update camera
-	this.camera.position.x += ( (this.mouseX / this.screenWidth  - 0.5) * 2000 - this.camera.position.x) * 0.1;
-	this.camera.position.y += (-(this.mouseY / this.screenHeight - 0.5) * 2000 - this.camera.position.y) * 0.1;
+	this.camera.position.x += ( (this.mouseX / this.viewportWidth  - 0.5) * 2000 - this.camera.position.x) * 0.1;
+	this.camera.position.y += (-(this.mouseY / this.viewportHeight - 0.5) * 2000 - this.camera.position.y) * 0.1;
 	this.camera.lookAt(this.scene.position);
 
 	//update cube

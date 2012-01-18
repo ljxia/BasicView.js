@@ -191,6 +191,8 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
+	<li><a href="../symbols/ALUMICAN.html">ALUMICAN</a></li>
+	
 	<li><a href="../symbols/ALUMICAN.BasicView.html">ALUMICAN.BasicView</a></li>
 	
 </ul>
@@ -232,7 +234,7 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/ALUMICAN.BasicView.html#constructor">ALUMICAN.BasicView</a></b>(rendererType, rendererParams, cameraType, useStats, useAutoScalingToStage, viewportWidth, viewportHeight)
+								<b><a href="../symbols/ALUMICAN.BasicView.html#constructor">ALUMICAN.BasicView</a></b>(rendererType, rendererParams, cameraType, useStats, useAutoScaling, viewportWidth, viewportHeight)
 							</div>
 							<div class="description">BasicView class is very simple template for getting started Three.js.</div>
 						</td>
@@ -389,39 +391,39 @@ ul.inheritsList
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/ALUMICAN.BasicView.html#screenHeight">screenHeight</a></b>
-								</div>
-								<div class="description">Window height.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/ALUMICAN.BasicView.html#screenWidth">screenWidth</a></b>
-								</div>
-								<div class="description">Window width.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								<b><a href="../symbols/ALUMICAN.BasicView.html#useAutoScalingToStage">useAutoScalingToStage</a></b>
+								<b><a href="../symbols/ALUMICAN.BasicView.html#useAutoScaling">useAutoScaling</a></b>
 								</div>
 								<div class="description">Whether content is scaled to fit stage (true) or not.</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&lt;static&gt; &lt;constant&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
 								ALUMICAN.BasicView.<b><a href="../symbols/ALUMICAN.BasicView.html#.version">version</a></b>
 								</div>
-								<div class="description">Version information</div>
+								<div class="description">Version information.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ALUMICAN.BasicView.html#viewportHeight">viewportHeight</a></b>
+								</div>
+								<div class="description">Viewport height.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/ALUMICAN.BasicView.html#viewportWidth">viewportWidth</a></b>
+								</div>
+								<div class="description">Viewport width.</div>
 							</td>
 						</tr>
 					
@@ -562,7 +564,7 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>ALUMICAN.BasicView</b>(rendererType, rendererParams, cameraType, useStats, useAutoScalingToStage, viewportWidth, viewportHeight)
+						<b>ALUMICAN.BasicView</b>(rendererType, rendererParams, cameraType, useStats, useAutoScaling, viewportWidth, viewportHeight)
 				</div>
 				
 				<div class="description">
@@ -602,10 +604,10 @@ ul.inheritsList
 								<dd>Whether stats is used or not.</dd>
 						
 							<dt>
-								<span class="light fixedFont">{bool}</span>  <b>useAutoScalingToStage</b>
+								<span class="light fixedFont">{bool}</span>  <b>useAutoScaling</b>
 								<i>Optional, Default: true</i>
 							</dt>
-								<dd>Whether content is scaled to fit stage (true) or not.</dd>
+								<dd>Whether content is scaled to fit window or not.</dd>
 						
 							<dt>
 								<span class="light fixedFont">{integer}</span>  <b>viewportWidth</b>
@@ -930,55 +932,11 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="screenHeight"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{integer}</span>
-					<b>screenHeight</b>
-					
-					</div>
-					<div class="description">
-						Window height.
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="screenWidth"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{integer}</span>
-					<b>screenWidth</b>
-					
-					</div>
-					<div class="description">
-						Window width.
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="useAutoScalingToStage"> </a>
+					<a name="useAutoScaling"> </a>
 					<div class="fixedFont">
 					
 					<span class="light">{bool}</span>
-					<b>useAutoScalingToStage</b>
+					<b>useAutoScaling</b>
 					
 					</div>
 					<div class="description">
@@ -997,14 +955,58 @@ ul.inheritsList
 					<hr />
 				
 					<a name=".version"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<div class="fixedFont">&lt;static&gt; &lt;constant&gt; 
 					
 					
 					<span class="light">ALUMICAN.BasicView.</span><b>version</b>
 					
 					</div>
 					<div class="description">
-						Version information
+						Version information.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="viewportHeight"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{integer}</span>
+					<b>viewportHeight</b>
+					
+					</div>
+					<div class="description">
+						Viewport height.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="viewportWidth"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{integer}</span>
+					<b>viewportWidth</b>
+					
+					</div>
+					<div class="description">
+						Viewport width.
 						
 						
 					</div>
@@ -1479,7 +1481,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed Jan 18 2012 18:12:12 GMT+0900 (JST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Jan 19 2012 00:41:58 GMT+0900 (JST)
 		</div>
 	</body>
 </html>
