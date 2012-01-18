@@ -6,7 +6,10 @@
  * @version 0.1.0
  * @license <a href="http://en.wikipedia.org/wiki/MIT_License">X11/MIT License</a>
  */
- 
+
+var ALUMICAN;
+if (!ALUMICAN) ALUMICAN = {}; 
+
 /**
  * BasicView class is very simple template for getting started Three.js.
  * @class
@@ -37,7 +40,7 @@
  *
  * @return void
  */
-function BasicView(rendererType, rendererParams, cameraType, useStats, useAutoScalingToStage, viewportWidth, viewportHeight)
+ALUMICAN.BasicView = function(rendererType, rendererParams, cameraType, useStats, useAutoScalingToStage, viewportWidth, viewportHeight)
 {
 	this.container;
 
@@ -71,12 +74,10 @@ function BasicView(rendererType, rendererParams, cameraType, useStats, useAutoSc
  * Version information
  * @static
  */
-BasicView.version = "1.0.1";
+ALUMICAN.BasicView.version = "1.0.1";
 
-BasicView.prototype =
+ALUMICAN.BasicView.prototype =
 {
-	/** @scope BasicView.prototype */
-	
 	/**
 	 * This function is called once when application starts.
 	 * @event
@@ -87,7 +88,7 @@ BasicView.prototype =
 	},
 
 	/**
-	 * This function is called per frames.
+	 * This function is called each frame.
 	 * @event
 	 * @return void
 	 */
@@ -204,7 +205,7 @@ BasicView.prototype =
 		//output version
 		if (useStats)
 		{
-			console.log("BasicView " + BasicView.version);
+			console.log("BasicView " + ALUMICAN.BasicView.version);
 		}
 
 		//WebGL is not supported

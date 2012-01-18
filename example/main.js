@@ -3,7 +3,7 @@ function Main()
 	//instance member
 	this.cube;
 }
-Main.prototype = new BasicView(/*config*/);
+Main.prototype = new ALUMICAN.BasicView(/*config*/);
 
 //------------------------------------------------------------
 Main.prototype.setup = function()
@@ -64,6 +64,7 @@ Main.prototype.onMouseMove = function(event)
 //------------------------------------------------------------
 Main.prototype.onMouseDragged = function(event)
 {
+	console.log(event.type);
 };
 
 //------------------------------------------------------------
