@@ -1,0 +1,32 @@
+@import "html5reset-1.6.1.css";
+
+body {
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	color: #999;
+	background-color: #000;
+	font-family: alias, Verdana, sans-serif;
+	font-size: 11px;
+}
+
+a {
+	color:#999;
+	text-decoration:underline;
+}
+
+a:hover {
+	color:#ff0000;
+	text-decoration:underline;
+}
+
+a:hover {
+	color:#ff0000;
+	text-decoration:underline;
+}
+
+.info {
+	position : absolute;
+	bottom: 5px;
+	left: 5px;
+}

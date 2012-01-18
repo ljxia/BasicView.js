@@ -1,12 +1,12 @@
-function Main()
+function App()
 {
 	//instance member
 	this.cube;
 }
-Main.prototype = new ALUMICAN.BasicView(/*config*/);
+App.prototype = new ALUMICAN.BasicView("Canvas");
 
 //------------------------------------------------------------
-Main.prototype.setup = function()
+App.prototype.setup = function()
 {
 	//add light
 	var light = new THREE.PointLight(0xffffff, 1, 3000);
@@ -22,7 +22,7 @@ Main.prototype.setup = function()
 };
 
 //------------------------------------------------------------
-Main.prototype.update = function()
+App.prototype.update = function()
 {
 	//update camera
 	this.camera.position.x += ( (this.mouseX / this.viewportWidth  - 0.5) * 2000 - this.camera.position.x) * 0.1;
@@ -35,49 +35,49 @@ Main.prototype.update = function()
 };
 
 //------------------------------------------------------------
-Main.prototype.draw = function()
+App.prototype.draw = function()
 {
 	//render scene
 	this.renderer.render(this.scene, this.camera);
 };
 
 //------------------------------------------------------------
-Main.prototype.exit = function()
+App.prototype.exit = function()
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onMouseDown = function(event)
+App.prototype.onMouseDown = function(event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onMouseUp = function(event)
+App.prototype.onMouseUp = function(event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onMouseMove = function(event)
+App.prototype.onMouseMove = function(event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onMouseDragged = function(event)
+App.prototype.onMouseDragged = function(event)
 {
 	console.log(event.type);
 };
 
 //------------------------------------------------------------
-Main.prototype.onKeyDown = function(keyCode, event)
+App.prototype.onKeyDown = function(keyCode, event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onKeyUp = function(keyCode, event)
+App.prototype.onKeyUp = function(keyCode, event)
 {
 };
 
 //------------------------------------------------------------
-Main.prototype.onResize = function(event)
+App.prototype.onResize = function(event)
 {
 };
