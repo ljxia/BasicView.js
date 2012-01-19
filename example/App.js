@@ -1,7 +1,7 @@
 function App()
 {
-	//instance member
 	this.cube;
+	this.light;
 }
 App.prototype = new ALUMICAN.BasicView("Canvas");
 
@@ -9,9 +9,9 @@ App.prototype = new ALUMICAN.BasicView("Canvas");
 App.prototype.setup = function()
 {
 	//add light
-	var light = new THREE.PointLight(0xffffff, 1, 3000);
-	light.position.set(0, 0, 1000);
-	this.scene.add(light);
+	this.light = new THREE.PointLight(0xffffff, 1, 3000);
+	this.light.position.set(0, 0, 1000);
+	this.scene.add(this.light);
 
 	//add cube
 	this.cube = new THREE.Mesh(
@@ -19,6 +19,8 @@ App.prototype.setup = function()
 		new THREE.MeshLambertMaterial({ color: 0xffffff, shading : THREE.FlatShading })
 	);
 	this.scene.add(this.cube);
+
+	$("#shading").html(this.cube.material.wireframe ? "WIREFRAME" : "FLAT SHADING");
 };
 
 //------------------------------------------------------------
@@ -70,6 +72,15 @@ App.prototype.onMouseDragged = function(event)
 //------------------------------------------------------------
 App.prototype.onKeyDown = function(keyCode, event)
 {
+	switch (keyCode)
+	{
+		//SPACE
+		case 32:
+			var wireframe = this.cube.material.wireframe = !this.cube.material.wireframe;
+			this.scene[wireframe ? "remove" : "add"](this.light);
+			$("#shading").html(wireframe ? "WIREFRAME" : "FLAT SHADING");
+			break;
+	}
 };
 
 //------------------------------------------------------------
