@@ -334,12 +334,16 @@ ALUMICAN.BasicView.prototype =
 
 	_mouseDownHandler : function(e)
 	{
+		e.preventDefault();
+		
 		this.isMouseDown = true;
 		this.onMouseDown(e);
 	},
 
 	_mouseMoveHandler : function(e)
 	{
+		e.preventDefault();
+		
 		if (e.pageX == this.mouseX && e.pageY == this.mouseY) return;
 		this.mouseX = e.pageX;
 		this.mouseY = e.pageY;
@@ -357,6 +361,8 @@ ALUMICAN.BasicView.prototype =
 
 	_mouseUpHandler : function(e)
 	{
+		e.preventDefault();
+		
 		this.isMouseDown = false;
 		this.isMouseDragging = false;
 		this.onMouseUp(e);

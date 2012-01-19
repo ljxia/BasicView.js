@@ -66,7 +66,6 @@ App.prototype.onMouseMove = function(event)
 //------------------------------------------------------------
 App.prototype.onMouseDragged = function(event)
 {
-	console.log(event.type);
 };
 
 //------------------------------------------------------------
